@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:quizzy/questions.dart';
-
+import 'quizBrain.dart';
+// TO ACCESS THE QUESTIONS IN THE QUIZ_BRAIN FILE WE NED TO CREATE A QUIZ_BRAIN OBJECT
+QuizBrain quizBrain = QuizBrain();
 void main(){
   runApp(
     Quizzy(),
@@ -42,23 +43,6 @@ class _QuizPageState extends State<QuizPage> {
     //play a buzzed no sound when an incorrect answer is pressed
   }
   List<Icon> scoreKeeper = [];  //Has a list of Icons that keep the score
-
-//  List<String> questions = [
-//    'Q1 : You can lead a cow downstairs but not upstairs',
-//    'Q2 : Approximately one quarter of human bones are in the feet',
-//    'Q3 : A slug\'s blood is green'
-//  ];
-//
-//  List<bool> answers = [
-//    false, true, true
-//  ];
-
-  List<Questions> questions = [
-    Questions(q: 'Q1 : You can lead a cow downstairs but not upstairs', a:  false),
-    Questions(q: 'Q2 : Approximately one quarter of human bones are in the feet', a: true),
-    Questions(q: 'Q3 : A slug\'s blood is green', a: true)
-  ];
-//  Questions q1 = Questions(q: 'You can lead a cow downstairs but not upstairs', a: false);
   int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
@@ -71,7 +55,7 @@ class _QuizPageState extends State<QuizPage> {
           child: Center(
             child: Container(
               child: Text(
-                questions[questionNumber].question,
+                quizBrain.questions[questionNumber].question,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Quicksand',
@@ -89,7 +73,7 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.green.shade400,
               textColor: Colors.white,
               onPressed: (){
-                bool correctAnswer = questions[questionNumber].answer;
+                bool correctAnswer = quizBrain.questions[questionNumber].answer;
                 if(correctAnswer == true){
                   print('the user got it right');
                 }
@@ -120,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.red.shade400,
               textColor: Colors.white,
               onPressed: (){
-                bool correctAnswer = questions[questionNumber].answer;
+                bool correctAnswer = quizBrain.questions[questionNumber].answer;
                 if(correctAnswer == false){
                   print('the user got it right');
                 }
