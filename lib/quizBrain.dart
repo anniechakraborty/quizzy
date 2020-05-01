@@ -1,7 +1,11 @@
 import 'questions.dart';
-
+// underscore in front of a variable name makes the variable private. We do this so that the variable cannot be accessed
+// outside of the class and also so that it's values cannot be changed.
 class QuizBrain{
-  List<Questions> questions = [
+
+  int _questionNumber = 0;
+
+  List<Questions> _questions = [
     Questions(q : 'Q1 : You can lead a cow downstairs but not upstairs', a:  false),
     Questions(q : 'Q2 : Approximately one quarter of human bones are in the feet', a: true),
     Questions(q : 'Q3 : A slug\'s blood is green', a: true),
@@ -16,4 +20,17 @@ class QuizBrain{
     Questions(q : 'Q12 : Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.', a : true),
     Questions(q : 'Q13 : In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.', a : true)
   ];
+
+  void incrementQuestion(){
+    if(_questionNumber < _questions.length - 1){
+      _questionNumber++;
+    }
+  }
+
+  String getQuestion(){
+    return _questions[_questionNumber].question;
+  }
+  bool getAnswer(){
+    return _questions[_questionNumber].answer;
+  }
 }

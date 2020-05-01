@@ -43,7 +43,6 @@ class _QuizPageState extends State<QuizPage> {
     //play a buzzed no sound when an incorrect answer is pressed
   }
   List<Icon> scoreKeeper = [];  //Has a list of Icons that keep the score
-  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
           child: Center(
             child: Container(
               child: Text(
-                quizBrain.questions[questionNumber].question,
+                quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Quicksand',
@@ -73,7 +72,7 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.green.shade400,
               textColor: Colors.white,
               onPressed: (){
-                bool correctAnswer = quizBrain.questions[questionNumber].answer;
+                bool correctAnswer = quizBrain.getAnswer();
                 if(correctAnswer == true){
                   print('the user got it right');
                 }
@@ -82,7 +81,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
                 setState(() {
                   //The user pressed true. We will do something here
-                  questionNumber++;
+                  quizBrain.incrementQuestion();
                 });
                 playSound();
               },
@@ -104,7 +103,7 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.red.shade400,
               textColor: Colors.white,
               onPressed: (){
-                bool correctAnswer = quizBrain.questions[questionNumber].answer;
+                bool correctAnswer = quizBrain.getAnswer();
                 if(correctAnswer == false){
                   print('the user got it right');
                 }
@@ -114,7 +113,7 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   //The user pressed false. We will do something here
                 });
-                questionNumber = questionNumber + 1;
+                quizBrain.incrementQuestion();
                 playSound();
               },
               child: Text(
