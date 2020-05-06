@@ -4,7 +4,7 @@ import 'questions.dart';
 class QuizBrain{
 
   int _questionNumber = 0;
-
+  int _questionBankLength = 0;
   List<Questions> _questions = [
     Questions(q : 'Q1 : You can lead a cow downstairs but not upstairs', a:  false),
     Questions(q : 'Q2 : Approximately one quarter of human bones are in the feet', a: true),
@@ -20,13 +20,22 @@ class QuizBrain{
     Questions(q : 'Q12 : Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.', a : true),
     Questions(q : 'Q13 : In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.', a : true)
   ];
-
   void incrementQuestion(){
-    if(_questionNumber < _questions.length - 1){
+    int q = questionLength();
+    if(_questionNumber < q - 1){      //checking if teh question bank has any more questions to serve
       _questionNumber++;
     }
   }
-
+  int questionLength(){
+    _questionBankLength = _questions.length;
+    return _questionBankLength;
+  }
+  int getCurrentQuestionNumber(){
+    return _questionNumber;
+  }
+  void setCurrentQuestion(int value){
+    _questionNumber = value;
+  }
   String getQuestion(){
     return _questions[_questionNumber].question;
   }
