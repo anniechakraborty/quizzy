@@ -1,6 +1,12 @@
 # quizzy
 
-A new quiz application.
+This is a true or false quiz application.
+
+## About the project
+
+1. True or false type questions
+2. Multiple levels and kinds of quizes
+3. 10 questions per quiz. 
 
 ## Getting Started
 
