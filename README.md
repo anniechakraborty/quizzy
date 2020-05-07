@@ -6,7 +6,7 @@ This is a true or false quiz application.
 
 1. True or false type questions
 2. Multiple levels and kinds of quizes
-3. 10 questions per quiz. 
+3. 13 questions per quiz. 
 
 ## Getting Started
 
